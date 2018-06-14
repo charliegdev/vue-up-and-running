@@ -9,11 +9,13 @@
         <transition v-on:before-enter="handleBeforeEnter" v-on:enter="handleEnter" v-on:leave="handleLeave">
             <div v-if="divVisible">This content is sometimes hidden.</div>
         </transition>
+        <PositiveNumbers></PositiveNumbers>
     </div>
 </template>
 
 <script>
 import { TweenLite } from "gsap/TweenMax";
+import PositiveNumbers from "./PositiveNumbers.vue";
 
 export default {
     name: 'HelloWorld',
@@ -34,6 +36,9 @@ export default {
         handleLeave(el, done) {
             TweenLite.to(el, 0.6, { opacity: 0, onComplete: done });
         }
+    },
+    components: {
+        PositiveNumbers
     }
 };
 </script>

@@ -38,6 +38,7 @@ module.exports = {
         "no-param-reassign": ["error", {"props": false }],
         "quotes": 0,
         "arrow-parens": ["error", "as-needed"],
-        "max-len": 0
+        "max-len": 0,
+        "trailing-space": 0
     }
 }
