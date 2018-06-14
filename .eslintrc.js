@@ -34,6 +34,9 @@ module.exports = {
         "padded-blocks": 0,
         "no-console": 0,
         "comma-dangle": 0,
-        "semi": [1, "always"]
+        "semi": [1, "always"],
+        "no-param-reassign": ["error", {"props": false }],
+        "quotes": 0,
+        "arrow-parens": ["error", "as-needed"]
     }
 }

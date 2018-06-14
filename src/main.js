@@ -14,3 +14,11 @@ new Vue({
     components: { App },
     template: '<App/>'
 });
+
+Vue.directive("blink", el => {
+    let isVisible = true;
+    setInterval(() => {
+        isVisible = !isVisible;
+        el.style.visibility = isVisible ? 'visible' : 'hidden';
+    }, 1000);
+});

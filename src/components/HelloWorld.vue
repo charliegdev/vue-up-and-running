@@ -4,6 +4,8 @@
         <p v-if="hours < 12">Good morning!</p>
         <p v-if="hours >= 12 && hours < 18">Good afternoon!</p>
         <p v-if="hours >= 18">Good evening!</p>
+
+        <p v-blink>The universe will blink for you.</p>
     </div>
 </template>
 
