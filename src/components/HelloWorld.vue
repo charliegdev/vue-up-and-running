@@ -6,13 +6,15 @@
         <p v-if="hours >= 18">Good evening!</p>
 
         <button @click="divVisible = !divVisible">Toggle Visibility</button>
-        <transition name="fade">
+        <transition v-on:before-enter="handleBeforeEnter" v-on:enter="handleEnter" v-on:leave="handleLeave">
             <div v-if="divVisible">This content is sometimes hidden.</div>
         </transition>
     </div>
 </template>
 
 <script>
+import { TweenLite } from "gsap/TweenMax";
+
 export default {
     name: 'HelloWorld',
     data() {
@@ -21,6 +23,17 @@ export default {
             hours: new Date().getHours(),
             divVisible: true
         };
+    },
+    methods: {
+        handleBeforeEnter(el) {
+            el.style.opacity = 0;
+        },
+        handleEnter(el, done) {
+            TweenLite.to(el, 0.6, { opacity: 1, onComplete: done });
+        },
+        handleLeave(el, done) {
+            TweenLite.to(el, 0.6, { opacity: 0, onComplete: done });
+        }
     }
 };
 </script>

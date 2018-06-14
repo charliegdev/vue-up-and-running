@@ -37,6 +37,7 @@ module.exports = {
         "semi": [1, "always"],
         "no-param-reassign": ["error", {"props": false }],
         "quotes": 0,
-        "arrow-parens": ["error", "as-needed"]
+        "arrow-parens": ["error", "as-needed"],
+        "max-len": 0
     }
 }
