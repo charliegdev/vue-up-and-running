@@ -5,17 +5,15 @@
         <p v-if="hours >= 12 && hours < 18">Good afternoon!</p>
         <p v-if="hours >= 18">Good evening!</p>
 
-        <button @click="divVisible = !divVisible">Toggle Visibility</button>
-        <transition v-on:before-enter="handleBeforeEnter" v-on:enter="handleEnter" v-on:leave="handleLeave">
-            <div v-if="divVisible">This content is sometimes hidden.</div>
-        </transition>
         <PositiveNumbers></PositiveNumbers>
+        <price-display :price-so-far="price"></price-display>
     </div>
 </template>
 
 <script>
-import { TweenLite } from "gsap/TweenMax";
 import PositiveNumbers from "./PositiveNumbers.vue";
+import ColorPreview from "./ColorPreview.vue";
+import PriceDisplay from "./PriceDisplay.vue";
 
 export default {
     name: 'HelloWorld',
@@ -23,22 +21,20 @@ export default {
         return {
             msg: 'Welcome to Your Vue.js App',
             hours: new Date().getHours(),
-            divVisible: true
+            divVisible: true,
+            price: 5
         };
     },
     methods: {
-        handleBeforeEnter(el) {
-            el.style.opacity = 0;
-        },
-        handleEnter(el, done) {
-            TweenLite.to(el, 0.6, { opacity: 1, onComplete: done });
-        },
-        handleLeave(el, done) {
-            TweenLite.to(el, 0.6, { opacity: 0, onComplete: done });
-        }
+
     },
     components: {
-        PositiveNumbers
+        PositiveNumbers, ColorPreview, PriceDisplay
+    },
+    created() {
+        setInterval(() => { 
+            this.price++; 
+        }, 1000);
     }
 };
 </script>

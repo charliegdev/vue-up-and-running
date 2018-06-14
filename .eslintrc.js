@@ -39,6 +39,9 @@ module.exports = {
         "quotes": 0,
         "arrow-parens": ["error", "as-needed"],
         "max-len": 0,
-        "trailing-space": 0
+        "no-trailing-spaces": 0,
+        "eol-last": 0,
+        "no-plusplus": 0,
+        "func-names": 0
     }
 }
