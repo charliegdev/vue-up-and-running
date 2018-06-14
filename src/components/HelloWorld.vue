@@ -5,7 +5,10 @@
         <p v-if="hours >= 12 && hours < 18">Good afternoon!</p>
         <p v-if="hours >= 18">Good evening!</p>
 
-        <p v-blink>The universe will blink for you.</p>
+        <button @click="divVisible = !divVisible">Toggle Visibility</button>
+        <transition name="fade">
+            <div v-if="divVisible">This content is sometimes hidden.</div>
+        </transition>
     </div>
 </template>
 
@@ -15,7 +18,8 @@ export default {
     data() {
         return {
             msg: 'Welcome to Your Vue.js App',
-            hours: new Date().getHours()
+            hours: new Date().getHours(),
+            divVisible: true
         };
     }
 };
@@ -36,5 +40,13 @@ li {
 }
 a {
     color: #42b983;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
 </style>
